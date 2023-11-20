@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Song</title>
+</head>
+<body>
+    <!-- <audio controls src="{{ url_for('static',filename='../../../static/songs/' + song_name)}}"></audio> -->
+    <audio controls src="{{ url_for('static',filename='/songs/' + song_name)}}"></audio>
+</body>
+</html>

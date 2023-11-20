@@ -18,4 +18,9 @@
         <button type="submit" class="btn btn-primary">Add Note</button>
     </div>
 </form>
+
+<form action="{{url_for('views.upload')}}" method="POST" enctype="multipart/form-data">
+    <input type="file" name="song" accept=".mp3">
+    <input type="submit" value="Upload">
+</form>
 {% endblock %}

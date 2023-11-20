@@ -35,3 +35,19 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+ALLOWED_EXTENSIONS = ['mp3']
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@views.route('/upload', methods=['POST'])
+def upload():
+    if 'song' not in request.files:
+        return "No Song Found"
+    song = request.files['song']
+    if song.filename == "":
+        return "No Song Selected"
+    if song and allowed_file(song.filename):
+        song.save('website/static/songs/' + song.filename)
+        return render_template('preview.html', song_name=song.filename)
+    return "Invalid Song"
